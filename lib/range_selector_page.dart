@@ -17,8 +17,6 @@ class RangeSelectorPage extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          // TODO: Validate the form
-
           if (formKey.currentState?.validate() == true) {
             formKey.currentState?.save();
             Navigator.of(context).push(
@@ -27,8 +25,6 @@ class RangeSelectorPage extends StatelessWidget {
               ),
             );
           }
-
-          // TODO: Navigate to the generator page
         },
         child: const Icon(Icons.arrow_forward),
       ),

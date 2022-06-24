@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'main.dart';
+import 'randomizer_state_notifier.dart';
 
 class RandomizerPage extends ConsumerWidget {
   RandomizerPage({super.key});
@@ -13,7 +14,7 @@ class RandomizerPage extends ConsumerWidget {
       body: Center(
         child: Text(
           ref
-                  .watch(randomizerChangeNotifierProvider)
+                  .watch(randomizerStateNotifierProvider)
                   .generateNumber
                   ?.toString() ??
               'Generate a Number',
@@ -23,7 +24,9 @@ class RandomizerPage extends ConsumerWidget {
       floatingActionButton: FloatingActionButton.extended(
         label: const Text('Generate'),
         onPressed: () {
-          ref.read(randomizerChangeNotifierProvider).generateRandomNumber();
+          ref
+              .read(randomizerStateNotifierProvider.notifier)
+              .generateRandomNumber();
         },
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
